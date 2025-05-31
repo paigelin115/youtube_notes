@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube 筆記系統</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 6px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <!-- 標題與登出按鈕 -->
+    <h1 class="logo-title">
+        <span class="you">You</span><span class="tube">Tube</span> 筆記系統
+    </h1>
+
+    <div>
+        <a href="{{ url_for('logout') }}" class="logout-btn">登出</a>
+    </div>
+
+
+    <div class="container">
+        <div class="main-flex">
+            <!-- 左邊：影片區 -->
+            <section class="video-block sticky-video-block">
+                <div class="form-row video-url-row">
+                    <input type="text" id="input-video-url" placeholder="貼上 YouTube 網址">
+                    <button type="button" id="load-video-btn">載入影片</button>
+                </div>
+                <div id="player-container"></div>
+            </section>
+
+            <!-- 右邊：筆記區 -->
+            <div class="right-panel">
+                <!-- 新增筆記 -->
+                <section class="addnote-block">
+                    <h2>新增筆記</h2>
+                    <div class="form-row note-input-row">
+                        <div class="input-group">
+                            <input type="text" id="video-url-input" placeholder="影片網址（自動填入）" readonly>
+                            <input type="text" id="timestamp-input" placeholder="時間點 (例如 00:01:23)">
+                        </div>
+                        <textarea id="note-text" placeholder="輸入筆記內容..." rows="2"></textarea>
+                        <button id="save-note">新增筆記</button>
+                    </div>
+                </section>
+
+                <!-- 我的筆記 -->
+                <section class="notes-block">
+                    <h2>我的筆記</h2>
+                    <div class="form-row">
+                        <input type="text" id="search-input" placeholder="搜尋筆記內容或網址" style="width: 100%;">
+                    </div>
+                    <ul id="notes"></ul>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- YouTube API + 自己的 JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>

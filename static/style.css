@@ -1,0 +1,443 @@
+/* 全域設定 */
+body {
+    background: #f7f9fa;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, '微軟正黑體', sans-serif;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+
+/* 網頁大白框設定 */
+.container {
+    max-width: 1200px;
+    margin: 32px auto 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 32px 28px 24px 28px;
+}
+
+/* Logo 樣式 */
+.logo-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+.logo-title .you {
+    color: black;
+}
+.logo-title .tube {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 2px;
+}
+
+/* 標題 */
+.main-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: bold;
+    color: #2d3a4b;
+    margin: 32px 0 24px 0;
+    letter-spacing: 2px;
+    padding-left: 4px;
+}
+h2 {
+    text-align: center;
+    color: #2d3a4b;
+    letter-spacing: 1px;
+    margin-top: 0;
+    font-size: 1.5em;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+}
+
+/* 主要左右排版 */
+.main-flex {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* 影片區塊（左側） */
+.video-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 22px;
+    flex: 0 0 600px;
+    max-width: 600px;
+}
+
+/* Sticky 效果 */
+.sticky-video-block {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-radius: 14px 14px 0 0;
+    padding-top: 16px;
+}
+
+/* 影片播放器容器 */
+#player-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 24px auto;
+}
+
+/* 影片 iframe 樣式 */
+#player-container iframe, #player-container > div {
+    margin: 0 auto;
+    display: block;
+    width: 600px !important;
+    height: 338px !important; /* 16:9 比例 */
+    max-width: 100%;
+    min-height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* 影片網址輸入區 */
+.video-url-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+/* 筆記區塊（右側） */
+.right-panel {
+    flex: 1 1 0;
+    min-width: 320px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 新增筆記區 */
+.addnote-block {
+    margin-bottom: 28px;
+}
+
+.form-row.note-input-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+#video-url-input, #timestamp-input, #note-text {
+    margin-bottom: 0;
+}
+#video-url-input {
+    flex: 2 1 0;
+    min-width: 0;
+}
+#timestamp-input {
+    width: 200px;
+    min-width: 80px;
+}
+
+/* 筆記輸入 textarea 兩行高，寬度適中 */
+#note-text {
+    max-width: 1000px;
+    width: 100%;
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    resize: vertical;
+    font-size: 1.08em;
+    padding: 12px 14px;
+    border: 1.5px solid #d0d7de;
+    border-radius: 6px;
+    background: #fafdff;
+    box-sizing: border-box;
+    min-height: 2.8em;
+    line-height: 1.4;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    white-space: pre-line;
+}
+
+/* 搜尋筆記區 */
+#search-input {
+    max-width: 400px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-size: 1.08em;
+    padding: 12px 14px;
+    border: 1.5px solid #d0d7de;
+    border-radius: 6px;
+    background: #fafdff;
+    box-sizing: border-box;
+}
+
+/* 輸入欄與 textarea 通用 */
+input[type="text"], textarea {
+    padding: 12px 14px;
+    border: 1.5px solid #d0d7de;
+    border-radius: 6px;
+    font-size: 1.08em;
+    transition: border 0.2s;
+    background: #fafdff;
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: #4f8cff;
+    outline: none;
+    background: #fff;
+}
+
+/* 按鈕統一樣式 */
+button,
+.edit-note-btn, .save-note-btn, .delete-note-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #4f8cff;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-right: 6px;
+}
+
+button:hover,
+.edit-note-btn:hover {
+    background: #2563eb;
+}
+
+/* 筆記區按鈕顏色 */
+.save-note-btn {
+    background: #27ae60;
+}
+.save-note-btn:hover {
+    background: #219150;
+}
+.delete-note-btn {
+    background: #e74c3c;
+}
+.delete-note-btn:hover {
+    background: #c0392b;
+}
+
+/* 筆記區塊 */
+#notes {
+    margin-top: 28px;
+    padding: 0;
+    list-style: none;
+}
+
+.video-group {
+    background: #f3f6fa;
+    border-radius: 10px;
+    margin-bottom: 28px;
+    padding: 18px 16px 12px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-left: 4px solid #4f8cff;
+}
+
+.video-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.video-header img {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.video-header a {
+    color: #2563eb;
+    text-decoration: none;
+    margin-left: 12px;
+    font-size: 1.08em;
+}
+
+.note-list {
+    padding-left: 0;
+}
+
+.note-card {
+    background: #fff;
+    border-radius: 8px;
+    border: 2px solid #d0d7de;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    padding: 10px 14px 12px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s;
+}
+
+.note-content {
+    margin-top: 0;
+    font-size: 1.05em;
+    line-height: 1.5;
+    color: #333;
+}
+
+.note-card-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.note-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.note-text {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    white-space: pre-line;
+}
+
+.edit-area {
+    margin-top: 6px;
+    font-size: 1em;
+    border: 1.2px solid #b6c2d1;
+    border-radius: 5px;
+    padding: 6px 10px;
+    background: #fafdff;
+}
+
+.timestamp-link {
+    margin-bottom: 4px;
+    padding-top: 0;
+    display: block;
+    font-size: 0.95em;
+    line-height: 1.2;
+    color: #4f8cff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 響應式設計 */
+@media (max-width: 1000px) {
+    .main-flex {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .video-block, .right-panel {
+        max-width: 100%;
+        width: 100%;
+    }
+    #player-container iframe, #player-container > div {
+        width: 100% !important;
+        height: 220px !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .container {
+        padding: 10px 2vw;
+    }
+    .form-row, .form-row.note-input-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    .video-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    #note-text {
+        height: auto;
+        min-height: 2.4em;
+    }
+}
+
+.edit-note-btn, .save-note-btn, .delete-note-btn {
+    min-width: 60px;
+    max-width: 90px;
+    width: 70px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.logout-btn {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    z-index: 999;
+    padding: 8px 14px;
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.logout-btn:hover {
+    background: #c0392b;
+}
+
+@keyframes flash {
+    0%   { background-color: #dff0d8; }
+    100% { background-color: white; }
+}
+.note-card.flash {
+    animation: flash 1s ease-in-out;
+}
+
+input:focus, textarea:focus, button:focus {
+    outline: 2px solid #4f8cff;
+    outline-offset: 2px;
+}
+
+.video-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.video-thumbnail-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.video-thumbnail-card:hover {
+    transform: scale(1.02);
+}
+.video-thumbnail-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.video-thumbnail-title {
+    padding: 8px 10px;
+    font-size: 0.95em;
+    color: #333;
+}
