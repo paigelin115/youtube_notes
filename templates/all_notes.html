@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>所有筆記資料</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #999; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1>所有筆記資料</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>使用者名稱</th>
+            <th>影片網址</th>
+            <th>時間戳</th>
+            <th>內容</th>
+        </tr>
+        {% for note in notes %}
+        <tr>
+            <td>{{ note[0] }}</td>
+            <td>{{ note[1] }}</td>
+            <td>{{ note[2] }}</td>
+            <td>{{ note[3] }}</td>
+            <td>{{ note[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

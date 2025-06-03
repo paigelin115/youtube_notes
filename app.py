@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, render_template, request, redirect, session, url_for
 
 app = Flask(__name__)
 app.secret_key = "xup6qo4fu62k70fm06au4a83"  #是 Flask 應用程式用來加密 session（用戶登入狀態等資料）的「祕密金鑰」。這個字串必須很長、很亂、不能被別人猜到，否則別人可能偽造你的 session，造成安全漏洞。
@@ -191,6 +192,21 @@ def forgot_password():
         return '密碼已重設，請重新登入。<a href="/login">登入</a>'
     
     return render_template('forgot_password.html')
+
+# 顯示所有筆記（管理用途）
+@app.route('/all_notes')
+def all_notes():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('''
+        SELECT notes.id, users.username, notes.video_url, notes.timestamp, notes.content
+        FROM notes
+        JOIN users ON notes.user_id = users.id
+    ''')
+    notes = cursor.fetchall()
+    conn.close()
+    return render_template('all_notes.html', notes=notes)
+
 
 # 啟動應用程式
 if __name__ == "__main__":

@@ -1,3 +1,4 @@
+#忽略不必要檔案
 __pycache__/
 *.pyc
 .env
