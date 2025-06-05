@@ -173,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(res => {
             if (res.ok) {
                 loadNotes();
-                noteVideoUrl.value = '';
                 timestampInput.value = '';
                 noteText.value = '';
             }
